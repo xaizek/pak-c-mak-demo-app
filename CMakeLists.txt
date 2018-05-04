@@ -35,7 +35,7 @@ endforeach()
 
 
 # Installing build artifacts
-set_target_properties(pak_c_mak_demo_app_library PROPERTIES PUBLIC_HEADER "include/mygenericclass.hpp")
+set_target_properties(pak_c_mak_demo_app_library PROPERTIES PUBLIC_HEADER "include/myholderclass.hpp")
 install(TARGETS pak_c_mak_demo_app_library 
         DESTINATION lib 
 		EXPORT pak_c_mak_demo_app_library-targets
