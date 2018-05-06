@@ -14,7 +14,7 @@ include_directories(./include)
 # Bulding and Compiling sources
 file(GLOB SOURCES "src/*.cpp")
 
-add_library(pak_c_mak_demo_app_library "${SOURCES}")
+add_library(pak_c_mak_demo_app_library ${SOURCES})
 
 add_executable (pak_c_mak_demo_app_executable "src/main.cpp")
 
@@ -24,11 +24,15 @@ target_link_libraries (pak_c_mak_demo_app_executable pak_c_mak_demo_app_library)
 # Running unit tests with gtest
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 
+if (NOT WIN32)
+    set(PTHREAD_LIB_PATH pthread)
+endif (WIN32)
+
 # from list of files we'll create tests test_name.cpp -> test_name
 foreach(_test_file ${TEST_SRC_FILES})
     get_filename_component(_test_name ${_test_file} NAME_WE)
     add_executable(${_test_name} ${_test_file})
-    target_link_libraries(${_test_name} ${GTEST_BOTH_LIBRARIES} pak_c_mak_demo_app_library)
+    target_link_libraries(${_test_name} ${GTEST_BOTH_LIBRARIES} pak_c_mak_demo_app_library ${PTHREAD_LIB_PATH})
     add_test(${_test_name} ${_test_name})
     set_tests_properties(${_test_name} PROPERTIES TIMEOUT 5)
 endforeach()
