@@ -1,3 +1,6 @@
 /build/
 /mingw-build/
 /googletest
+/cleanbuild.sh
+/mingw_out.log
+/vc_out.log
