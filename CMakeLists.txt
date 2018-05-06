@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 2.6.4)
 
 project(pak_c_mak_demo_app)
 
