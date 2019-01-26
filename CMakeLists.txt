@@ -28,6 +28,10 @@ if (NOT WIN32)
     set(PTHREAD_LIB_PATH pthread)
 endif (WIN32)
 
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+endif ()
+
 # from list of files we'll create tests test_name.cpp -> test_name
 foreach(_test_file ${TEST_SRC_FILES})
     get_filename_component(_test_name ${_test_file} NAME_WE)
